@@ -1,7 +1,11 @@
+import 'package:fakenoticications_app/const/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(child: MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -30,8 +34,19 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.red,
+      backgroundColor: color1,
+      body: Padding(
+        padding: const EdgeInsets.only(top: 70),
+        child: Center(
+          child: Column(
+            children: const [
+              Text(
+                '偽通知を作る',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
