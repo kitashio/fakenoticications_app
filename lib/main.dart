@@ -32,7 +32,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: Container(
         color: Colors.red,
-        child: Text('helloWorld'),
       ),
     );
   }
