@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class Time extends StatelessWidget {
@@ -22,20 +24,26 @@ class Time extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 500,
+              height: 450,
               child: AspectRatio(
                 aspectRatio: 1.0,
                 child: Stack(
                   children: [
                     Container(
                       width: double.infinity,
+                      child: CustomPaint(
+                        painter: BellsAndLegs(),
+                      ),
+                    ),
+                    Container(
+                      width: double.infinity,
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.black,
-                          boxShadow: [
-                            BoxShadow(
-                                offset: Offset(0.0, 5.0), blurRadius: 50.0),
-                          ]),
+                        shape: BoxShape.circle,
+                        color: Colors.black,
+                        boxShadow: [
+                          BoxShadow(offset: Offset(0.0, 5.0), blurRadius: 50.0),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -46,5 +54,56 @@ class Time extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class BellsAndLegs extends CustomPainter {
+  final Paint bellPaint;
+  final Paint legPaint;
+
+  BellsAndLegs()
+      : bellPaint = Paint(),
+        legPaint = Paint() {
+    bellPaint.color = const Color(0xFF333333);
+    bellPaint.style = PaintingStyle.fill;
+
+    legPaint.color = const Color(0xFF555555);
+    legPaint.style = PaintingStyle.stroke;
+    legPaint.strokeWidth = 10.0;
+    legPaint.strokeCap = StrokeCap.round;
+  }
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final radius = size.width / 2;
+    canvas.save();
+    canvas.translate(radius, radius);
+    canvas.rotate(2 * pi / 12);
+    drawerBellsAndLegs(radius, canvas);
+    canvas.rotate(-4 * pi / 12);
+    drawerBellsAndLegs(radius, canvas);
+
+    drawerBellsAndLegs(radius, canvas);
+    canvas.restore();
+  }
+
+  void drawerBellsAndLegs(radius, canvas) {
+    Path bell = Path();
+    Path leg1 = Path();
+    bell.moveTo(-55.0, -radius - 5);
+    bell.lineTo(55.0, -radius - 5);
+    bell.quadraticBezierTo(0.0, -radius - 75, -55.0, -radius - 10);
+
+    leg1.addOval(
+        Rect.fromCircle(center: Offset(0.0, -radius - 50), radius: 3.0));
+    leg1.moveTo(0.0, -radius - 50);
+    leg1.lineTo(0.0, radius + 70);
+    canvas.drawPath(leg1, legPaint);
+    canvas.drawPath(bell, bellPaint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
   }
 }
