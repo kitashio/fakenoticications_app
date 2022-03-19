@@ -8,7 +8,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   //向き指定
   SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,//縦固定
+    DeviceOrientation.portraitUp, //縦固定
   ]);
   runApp(
     const ProviderScope(child: MyApp()),
@@ -50,7 +50,11 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/偽 通 知.png', fit: BoxFit.fill, height: 32,),
+            Image.asset(
+              'assets/偽 通 知.png',
+              fit: BoxFit.fill,
+              height: 32,
+            ),
             const Text(
               'ようこそ！',
               style: TextStyle(
@@ -64,27 +68,33 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
-        child: Column(
+        child: ListView(
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
               color: Colors.grey[200],
-              child: const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text(
-                  '偽通知を作る',
-                  style: TextStyle(
-                    // decoration: TextDecoration.underline,
-                    // decorationStyle: TextDecorationStyle.double,
-                    decorationColor: customSwatch,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5),
+                child: Row(
+                  children: const [
+                    Icon(Icons.notifications),
+                    Text(
+                      '偽通知を作る',
+                      style: TextStyle(
+                        // decoration: TextDecoration.underline,
+                        // decorationStyle: TextDecorationStyle.double,
+                        decorationColor: customSwatch,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
             Container(
+              height: MediaQuery.of(context).size.height / 1.8,
               color: Colors.grey[200],
               child: GridView.count(
                 shrinkWrap: true,
@@ -305,6 +315,51 @@ class _MyHomePageState extends State<MyHomePage> {
                   //   ),
                   // ),
                 ],
+              ),
+            ),
+            // Container(
+            //   height: 30,
+            //   color: Colors.grey[200],
+            // )
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: GestureDetector(
+                onTap: () {},
+                child: Container(
+                  height: MediaQuery.of(context).size.height / 10,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.grey[200],
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: const [
+                            Icon(Icons.call),
+                            SizedBox(width: 10,),
+                            Text(
+                          '偽電話を作る',
+                          style: TextStyle(
+                            // decoration: TextDecoration.underline,
+                            // decorationStyle: TextDecorationStyle.double,
+                            decorationColor: customSwatch,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                          ],
+                        ),
+                        Image.asset(
+                          'assets/call.png',
+                          fit: BoxFit.fill,
+                          //height: 32,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
