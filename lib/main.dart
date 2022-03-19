@@ -1,9 +1,15 @@
 import 'package:fakenoticications_app/const/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'instagram_page.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  //向き指定
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,//縦固定
+  ]);
   runApp(
     const ProviderScope(child: MyApp()),
   );
@@ -36,17 +42,22 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white24,
+        //backgroundColor: Colors.white24,
         centerTitle: false,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-        title: const Text(
-          'ようこそ！',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/偽 通 知.png', fit: BoxFit.fill, height: 32,),
+            const Text(
+              'ようこそ！',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
       ),
       //backgroundColor: customSwatch[600],
@@ -104,12 +115,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           Image.asset('assets/line.png'),
                           const SizedBox(width: 8),
-                          const Text(
-                            "ライン",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold),
+                          const FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: Text(
+                              "Line",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ],
                       ),
@@ -141,12 +155,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           Image.asset('assets/insta.png'),
                           const SizedBox(width: 8),
-                          const Text(
-                            "インスタ",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
+                          const FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: Text(
+                              "Instagram",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ],
                       ),
@@ -162,20 +179,25 @@ class _MyHomePageState extends State<MyHomePage> {
                       shadowColor: customSwatch,
                       color: Colors.grey,
                       child: Row(
-                        children: const [
-                          VerticalDivider(
+                        children: [
+                          const VerticalDivider(
                             color: customSwatch,
                             thickness: 3,
                             width: 30,
                             indent: 30,
                             endIndent: 30,
                           ),
-                          Text(
-                            "Line",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold),
+                          Image.asset('assets/twitter.png'),
+                          const SizedBox(width: 8),
+                          const FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: Text(
+                              "Twitter",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ],
                       ),
@@ -191,20 +213,25 @@ class _MyHomePageState extends State<MyHomePage> {
                       shadowColor: customSwatch,
                       color: Colors.grey,
                       child: Row(
-                        children: const [
-                          VerticalDivider(
+                        children: [
+                          const VerticalDivider(
                             color: customSwatch,
                             thickness: 3,
                             width: 30,
                             indent: 30,
                             endIndent: 30,
                           ),
-                          Text(
-                            "Line",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold),
+                          Image.asset('assets/messenger.png'),
+                          const SizedBox(width: 8),
+                          const FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: Text(
+                              "Messenger",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ],
                       ),
@@ -220,20 +247,25 @@ class _MyHomePageState extends State<MyHomePage> {
                       shadowColor: customSwatch,
                       color: Colors.grey,
                       child: Row(
-                        children: const [
-                          VerticalDivider(
+                        children: [
+                          const VerticalDivider(
                             color: customSwatch,
                             thickness: 3,
                             width: 30,
                             indent: 30,
                             endIndent: 30,
                           ),
-                          Text(
-                            "Line",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold),
+                          Image.asset('assets/tiktok.png'),
+                          const SizedBox(width: 8),
+                          const FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: Text(
+                              "TikTok",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ],
                       ),
