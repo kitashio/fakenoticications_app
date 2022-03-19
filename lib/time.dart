@@ -23,8 +23,22 @@ class Time extends StatelessWidget {
             ),
             SizedBox(
               height: 500,
-              child: Container(
-                color: Colors.black,
+              child: AspectRatio(
+                aspectRatio: 1.0,
+                child: Stack(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.black,
+                          boxShadow: [
+                            BoxShadow(
+                                offset: Offset(0.0, 5.0), blurRadius: 50.0),
+                          ]),
+                    ),
+                  ],
+                ),
               ),
             ),
             ElevatedButton(onPressed: () {}, child: Text('保存'))
