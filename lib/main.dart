@@ -1,6 +1,7 @@
 import 'package:fakenoticications_app/const/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'instagram_page.dart';
 
 void main() {
   runApp(
@@ -93,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       shadowColor: customSwatch,
                       color: Colors.grey,
                       child: Row(
-                        children:  [
+                        children: [
                           const VerticalDivider(
                             color: customSwatch,
                             thickness: 3,
@@ -115,7 +116,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const InstagramPage()),
+                      );
+                    },
                     child: Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),
