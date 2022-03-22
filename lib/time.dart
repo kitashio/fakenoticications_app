@@ -39,9 +39,17 @@ class Time extends StatelessWidget {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.black,
+                        color: Colors.amber,
                         boxShadow: [
                           BoxShadow(offset: Offset(0.0, 5.0), blurRadius: 50.0),
+                        ],
+                      ),
+                      child: Stack(
+                        children: [
+                          Image.network('https://watch.onl.jp/hour00.png'),
+                          Image.network('https://watch.onl.jp/base00.png'),
+                          Image.network('https://watch.onl.jp/minute00.png'),
+                          Image.network('https://watch.onl.jp/second00.png')
                         ],
                       ),
                     ),
@@ -97,7 +105,7 @@ class BellsAndLegs extends CustomPainter {
     leg1.addOval(
         Rect.fromCircle(center: Offset(0.0, -radius - 50), radius: 3.0));
     leg1.moveTo(0.0, -radius - 50);
-    leg1.lineTo(0.0, radius + 70);
+    leg1.lineTo(0.0, radius + 50);
     canvas.drawPath(leg1, legPaint);
     canvas.drawPath(bell, bellPaint);
   }
