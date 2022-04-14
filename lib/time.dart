@@ -8,58 +8,56 @@ class Time extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.only(top: 100, bottom: 50),
-              child: Column(
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.only(top: 100, bottom: 50),
+            child: Column(
+              children: const [
+                Text(
+                  '偽通知をする時間を設定します',
+                  style: TextStyle(color: Colors.green),
+                ),
+                Text('時計を回して設定してください')
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 450,
+            child: AspectRatio(
+              aspectRatio: 1.0,
+              child: Stack(
                 children: [
-                  Text(
-                    '偽通知をする時間を設定します',
-                    style: TextStyle(color: Colors.green),
+                  SizedBox(
+                    width: double.infinity,
+                    child: CustomPaint(
+                      painter: BellsAndLegs(),
+                    ),
                   ),
-                  Text('時計を回して設定してください')
+                  Container(
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.amber,
+                      boxShadow: [
+                        BoxShadow(offset: Offset(0.0, 5.0), blurRadius: 50.0),
+                      ],
+                    ),
+                    child: Stack(
+                      children: [
+                        Image.network('https://watch.onl.jp/hour00.png'),
+                        Image.network('https://watch.onl.jp/base00.png'),
+                        Image.network('https://watch.onl.jp/minute00.png'),
+                        Image.network('https://watch.onl.jp/second00.png')
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
-            SizedBox(
-              height: 450,
-              child: AspectRatio(
-                aspectRatio: 1.0,
-                child: Stack(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      child: CustomPaint(
-                        painter: BellsAndLegs(),
-                      ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.amber,
-                        boxShadow: [
-                          BoxShadow(offset: Offset(0.0, 5.0), blurRadius: 50.0),
-                        ],
-                      ),
-                      child: Stack(
-                        children: [
-                          Image.network('https://watch.onl.jp/hour00.png'),
-                          Image.network('https://watch.onl.jp/base00.png'),
-                          Image.network('https://watch.onl.jp/minute00.png'),
-                          Image.network('https://watch.onl.jp/second00.png')
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            ElevatedButton(onPressed: () {}, child: Text('保存'))
-          ],
-        ),
+          ),
+          ElevatedButton(onPressed: () {}, child: const Text('保存'))
+        ],
       ),
     );
   }
